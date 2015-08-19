@@ -7,13 +7,32 @@
 <body ng-app="redditSearch">
 	<div class="container" ng-controller="RedditSearchController as redditCtrl">
 		<div class="row">
-			<h1>{{redditCtrl.text}}</h1>
-			<input>
-			<button>Search</button>
+			<h1>tidder</h1>
+			<p>Search for reddit posts with a URL you've found</p>
+			<input onClick="this.select();" style="width: 238px;" ng-model="searchUrl">
+			<button ng-click="searchClick()" ng-hide="loading">Search</button>
+			<img src="ajax-loader.gif" ng-show="loading" style="height: 15px;">
+		</div>
+		<div class="row" ng-repeat="link in links">
+			<h4><a ng-href="https://www.reddit.com{{link['permalink']}}" target="_blank">{{link["title"]}}</a></h4>
+			<p>{{link["score"]}} points &#8226; submitted to <a ng-href="https://www.reddit.com/r/{{link['subreddit']}}" target="_blank">/r/{{link["subreddit"]}}</a></p>
+		</div>
+		<div class="row" ng-show="noPostsFound">
+			<p>No posts were found with this URL. Do you want to <a href="https://www.reddit.com/submit">submit</a> it?</p>
 		</div>
 	</div>
 </body>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
 	<script type="text/javascript" src="main.js"></script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-66514019-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
 </html>
