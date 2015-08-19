@@ -1,1 +1,19 @@
-Hello World
+<html>
+<head>
+	<title>
+	</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body ng-app="redditSearch">
+	<div class="container" ng-controller="RedditSearchController as redditCtrl">
+		<div class="row">
+			<h1>{{redditCtrl.text}}</h1>
+			<input>
+			<button>Search</button>
+		</div>
+	</div>
+</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+</html>
